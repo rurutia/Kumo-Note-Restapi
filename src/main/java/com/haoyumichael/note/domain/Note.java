@@ -1,12 +1,14 @@
 package com.haoyumichael.note.domain;
 
+import java.util.Date;
+
 public class Note {
 
 	int id;
 	String subject;
 	String content;
 	String type;
-	String date;
+	Date date;
 	String mainType;
 	
 	public int getId() {
@@ -33,10 +35,10 @@ public class Note {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getMainType() {

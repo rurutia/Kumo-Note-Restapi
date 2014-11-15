@@ -2,6 +2,7 @@ package com.haoyumichael.note.controller;
  
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -32,32 +33,19 @@ public class BaseController {
 
 	@Autowired
 	private NoteDao noteDao;
-	
-	@GET
-	@Path("")
-	@Produces("text/html")
-	public void getEvent(@Context HttpServletResponse response,
-	        @Context HttpServletRequest request) throws ServletException,
-	        IOException {
-
-	    request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
-
-	}
  
 	@GET
 	@Path("load")
 	@Produces({MediaType.APPLICATION_JSON})
-	public Object loadNotes() throws JsonGenerationException, JsonMappingException, IOException
+	public List<Note> loadNotes() throws JsonGenerationException, JsonMappingException, IOException
 	{
-		ObjectMapper mapper = new ObjectMapper();
-		return mapper.writeValueAsString(noteDao.selectNotes());
+		return noteDao.selectNotes();
 	}
 	
 	@GET
 	@Path("load/{id}")
-	public String getSingleNote(@PathParam("id") int id) throws JsonGenerationException, JsonMappingException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		return mapper.writeValueAsString(noteDao.selectSingleNote(id));
+	public Note getSingleNote(@PathParam("id") int id) throws JsonGenerationException, JsonMappingException, IOException {
+		return noteDao.selectSingleNote(id);
 	}
 	
 	@POST
