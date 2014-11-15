@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <display-name>Kumo Note</display-name>
+    
+      <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/applicationContext.xml
+        </param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>resteasy.providers</param-name>
+        <param-value>com.haoyumichael.note.controller.DefaultExceptionHandler</param-value>
+</context-param>
+
+  	<listener>
+		<listener-class>
+			org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap
+                </listener-class>
+	</listener>
+	
+	<listener>
+	    <listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
+	</listener>
+  
+      <!-- this should be the same URL pattern as the servlet-mapping property -->
+<!--   <context-param>
+      <param-name>resteasy.servlet.mapping.prefix</param-name>
+      <param-value>/</param-value>
+  </context-param> -->
+  
+  <servlet>
+    <servlet-name>restsevlet</servlet-name>
+    <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+  </servlet>
+  
+    <servlet-mapping>
+       <servlet-name>restsevlet</servlet-name>
+       <url-pattern>/</url-pattern>
+  </servlet-mapping>
+	
+
+  
+<!--   <servlet>
+    <servlet-name>kumo-note-spring-dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet> -->
+  
+
+
+<!--   
+  <servlet-mapping>
+    <servlet-name>kumo-note-spring-dispatcher</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping> 
+  -->
+  
+
+  
+
+  
+  
+
+  
+  
+</web-app>
