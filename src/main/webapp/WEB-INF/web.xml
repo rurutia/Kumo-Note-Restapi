@@ -11,7 +11,9 @@
     
     <context-param>
         <param-name>resteasy.providers</param-name>
-        <param-value>com.haoyumichael.note.controller.DefaultExceptionHandler</param-value>
+        <param-value>
+        	com.haoyumichael.note.rest.exception.RestExceptionHandler
+        </param-value>
 </context-param>
 
   	<listener>
