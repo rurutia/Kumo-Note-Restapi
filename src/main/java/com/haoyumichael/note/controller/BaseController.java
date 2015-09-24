@@ -18,9 +18,9 @@ import javax.ws.rs.core.Response;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.jboss.resteasy.annotations.Form;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.haoyumichael.note.dao.NoteDao;
 import com.haoyumichael.note.domain.Note;
@@ -58,7 +58,7 @@ public class BaseController {
 	
 	@POST
 	@Path("/save")
-	public String saveNote(@Form Note note) throws JsonGenerationException, JsonMappingException, IOException { 
+	public String saveNote(@RequestBody Note note) throws JsonGenerationException, JsonMappingException, IOException { 
 		System.out.println("saving note.......");
 		noteDao.insertNote(note);
 		Map<String, String> result = new HashMap<String,String>();
