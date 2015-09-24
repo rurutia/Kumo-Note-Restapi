@@ -2,14 +2,25 @@ package com.haoyumichael.note.domain;
 
 import java.util.Date;
 
+import javax.ws.rs.FormParam;
+
 public class Note {
 
 	int id;
+
+	@FormParam("subject")
 	String subject;
+	
+	@FormParam("content")
 	String content;
+	
+	@FormParam("type")
 	String type;
-	Date date;
+	
+	@FormParam("mainType")
 	String mainType;
+	
+	Date date;
 	
 	public int getId() {
 		return id;
